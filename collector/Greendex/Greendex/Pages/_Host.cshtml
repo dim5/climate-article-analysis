@@ -1,0 +1,31 @@
+﻿@page "/"
+@using Greendex
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="4bH3qXJTNoErBVPVNcC64_Vi21FO7Y3ecFfT9sZbjoM" />
+    <title>Greendex</title>
+    <base href="~/" />
+    <link href="css/aboutReader.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/site.css" rel="stylesheet" />
+    <script>
+        toTop = () => {
+            scrollTo({ top: 0, left: 0 });
+            const inner = document.getElementById('mainContentSection');
+            if (!!inner) inner.scrollTo({ top: 0, left: 0 });
+        }
+    </script>
+</head>
+<body>
+    <app>
+        @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
+    </app>
+
+    <script src="_framework/blazor.server.js"></script>
+</body>
+</html>

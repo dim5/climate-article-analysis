@@ -1,0 +1,21 @@
+﻿@page "/"
+@namespace Greendex.Pages
+
+<main class="mx-auto text-center">
+    <h1 class="display-4">Hello!</h1>
+    <main class="lead pt-3">
+        Welcome!
+    </main>
+    <AuthorizeView>
+        <NotAuthorized>
+            <aside class="pt-3">
+                <em>Please log in to continue...</em>
+            </aside>
+        </NotAuthorized>
+        <Authorized>
+            <aside class="pt-3">
+                <a href="/hangdash" class="pt-1 btn btn-primary" role="button"><span class="oi oi-tags pr-1" aria-hidden="true"></span> Check the HangFire dashboard!</a>
+            </aside>
+        </Authorized>
+    </AuthorizeView>
+</main>

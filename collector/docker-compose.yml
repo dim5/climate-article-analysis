@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  textract:
+    build: "./textract"
+    expose:
+      - "8880"
+  web:
+    build: "./Greendex"
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - textract

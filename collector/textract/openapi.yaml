@@ -1,0 +1,83 @@
+openapi: 3.0.1
+info:
+  title: Textract
+  version: '1.0'
+  description: Data extractor for articles
+servers:
+  - url: https://localhost:8880
+paths:
+  /extract:
+    get:
+      tags:
+        - extract
+      description: Extract data from an article URL
+      operationId: extractByURL
+      parameters:
+        - name: url
+          in: query
+          description: Article url
+          required: true
+          explode: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Extract'
+        400:
+          description: Invalid status value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        404:
+          description: Invalid status value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+
+components:
+  schemas:
+    Extract:
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        textContent:
+          type: string
+        length:
+          type: number
+        siteName:
+          type: string
+        url:
+          type: string
+      example:
+        title: A deadly virus is spreading in marine mammals. Scientists say climate change
+          is to blame.
+        content: '<div id="readability-page-1" class="page"><div><p>When a deadly virus that
+          killed tens of thousands of European harbor seals in the northern Atlantic Ocean
+          in 2002 began threatening sea lions, seals and otters in the northern Pacific Ocean,
+          scientists were initially puzzled.</p><p>The highly contagious phocine distemper
+          virus </div>'
+        textContent: 'When a deadly virus that killed tens of thousands of European harbor
+          seals in the northern Atlantic Ocean in 2002 began threatening sea lions, seals
+          and otters in the northern Pacific Ocean, scientists were initially puzzled.The
+          highly contagious phocine distemper virus — which is not believed to affect humans
+          — ... and the ecology of diseases are changing in
+          wildlife and marine mammals will give us insight into the future, and how we need
+          to be prepared for a new paradigm of disease transmissions in animals and in humans.”'
+        length: 4529
+        siteName: NBC News
+        url: https://www.nbcnews.com/science/environment/deadly-virus-spreading-marine-mammals-scientists-say-climate-change-blame-n1078331
+
+    Message:
+      type: object
+      properties:
+        message:
+          type: string
