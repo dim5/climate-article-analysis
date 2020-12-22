@@ -15,3 +15,6 @@ The `analyzer` folder contains a set of Python scripts that I used during the ex
 from the collected articles.
 
 For more details see the specific `readme`s in each folder.
+
+---
+The web app for visualizations can be found here: [climate-article-vis](https://github.com/dim5/climate-article-vis)
