@@ -44,7 +44,7 @@ def fill_neo4j():
                                   encrypted=False)
 
     with driver.session() as session:
-        # session.write_transaction(constraint)
+        session.write_transaction(constraint)
         for entity, art_count in tqdm(filtered.items()):
             session.write_transaction(add_nodes, entity, art_count)
 
